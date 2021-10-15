@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'card1.dart';
 import 'card2.dart';
+import 'card3.dart';
+
 
 
 // 1
@@ -25,7 +27,8 @@ class _HomeState extends State<Home> {
     const Card2(),
 
     // TODO: Replace with Card3
-    Container(color: Colors.blue)
+    const Card3(),
+
   ];
 
 // 9
