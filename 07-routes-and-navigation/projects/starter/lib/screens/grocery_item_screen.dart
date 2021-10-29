@@ -16,6 +16,24 @@ class GroceryItemScreen extends StatefulWidget {
 
   // TODO: GroceryItemScreen MaterialPage Helper
 
+  static MaterialPage page(
+      {GroceryItem? item,
+        int index = -1,
+        required Function(GroceryItem) onCreate,
+        required Function(GroceryItem, int) onUpdate,
+      }) {
+    return MaterialPage(
+      name: FooderlichPages.groceryItemDetails,
+      key: ValueKey(FooderlichPages.groceryItemDetails),
+      child: GroceryItemScreen(
+        originalItem: item,
+        index: index,
+        onCreate: onCreate,
+        onUpdate: onUpdate,
+      ),
+    );
+  }
+
   const GroceryItemScreen({
     Key? key,
     required this.onCreate,

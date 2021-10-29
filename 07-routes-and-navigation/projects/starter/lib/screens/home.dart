@@ -41,7 +41,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // TODO: Wrap Consumer for AppStateManager
-    return Scaffold(
+    return Consumer<AppStateManager>(
+        builder: (context, appStateManager, child) {
+
+          return Scaffold(
       appBar: AppBar(
         title: Text(
           'Fooderlich',
@@ -57,6 +60,9 @@ class _HomeState extends State<Home> {
         currentIndex: widget.currentTab,
         onTap: (index) {
           // TODO: Update user's selected tab
+          Provider.of<AppStateManager>(context, listen: false)
+              .goToTab(index);
+
         },
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
@@ -75,6 +81,8 @@ class _HomeState extends State<Home> {
       ),
     );
     // TODO: Add closing },);
+        },);
+
   }
 
   Widget profileButton() {
