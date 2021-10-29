@@ -65,6 +65,9 @@ class AppRouter extends RouterDelegate
           OnboardingScreen.page(),
 
         // TODO: Add Home
+        if (appStateManager.isOnboardingComplete)
+          Home.page(appStateManager.getSelectedTab),
+
         // TODO: Create new item
         // TODO: Select GroceryItemScreen
         // TODO: Add Profile Screen

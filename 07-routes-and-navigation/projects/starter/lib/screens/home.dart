@@ -3,9 +3,22 @@ import 'package:flutter/material.dart';
 import 'explore_screen.dart';
 import 'grocery_screen.dart';
 import 'recipes_screen.dart';
+import 'package:provider/provider.dart';
+import '../models/models.dart';
+
 
 class Home extends StatefulWidget {
   // TODO: Home MaterialPage Helper
+  static MaterialPage page(int currentTab) {
+    return MaterialPage(
+      name: FooderlichPages.home,
+      key: ValueKey(FooderlichPages.home),
+      child: Home(
+        currentTab: currentTab,
+      ),
+    );
+  }
+
 
   const Home({
     Key? key,
