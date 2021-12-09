@@ -8,8 +8,10 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import '../network/model_response.dart';
 import '../network/recipe_model.dart';
+import '../network/service_interface.dart';
 
-class MockService {
+
+class MockService implements ServiceInterface{
   // 1
   late APIRecipeQuery _currentRecipes1;
   late APIRecipeQuery _currentRecipes2;
@@ -33,6 +35,7 @@ class MockService {
 
 
 // TODO: Add query method
+  @override
   Future<Response<Result<APIRecipeQuery>>> queryRecipes(
       String query, int from, int to) {
     // 6

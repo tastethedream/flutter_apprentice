@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 // 1
 class Ingredient extends Equatable {
   // 2
-  int? id;
-  int? recipeId;
+  final int? id;
+  final int? recipeId;
   final String? name;
   final double? weight;
 
