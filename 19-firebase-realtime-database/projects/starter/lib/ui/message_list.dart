@@ -5,6 +5,8 @@ import '../data/message.dart';
 import '../data/message_dao.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'message_widget.dart';
+import '../data/user_dao.dart';
+
 
 
 class MessageList extends StatefulWidget {
@@ -18,6 +20,8 @@ class MessageListState extends State<MessageList> {
   final TextEditingController _messageController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   // TODO: Add Email String
+  String? email;
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +31,23 @@ class MessageListState extends State<MessageList> {
 
 
     // TODO: Add UserDao
+    final userDao = Provider.of<UserDao>(context, listen: false);
+    email = userDao.email();
+
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('RayChat'),
         // TODO: Replace with actions
+        actions: [
+          IconButton(
+            onPressed: () {
+              userDao.logout();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -83,6 +99,8 @@ class MessageListState extends State<MessageList> {
         text: _messageController.text,
         date: DateTime.now(),
         // TODO: add email
+        email: email,
+
       );
       messageDao.saveMessage(message);
       _messageController.clear();
